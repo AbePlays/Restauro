@@ -14,6 +14,8 @@
 		30FB9F98252D8F4A00C2CF11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30FB9F97252D8F4A00C2CF11 /* Preview Assets.xcassets */; };
 		30FB9F9B252D8F4A00C2CF11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30FB9F99252D8F4A00C2CF11 /* LaunchScreen.storyboard */; };
 		30FB9FA4252D913400C2CF11 /* Signin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9FA3252D913400C2CF11 /* Signin.swift */; };
+		30FB9FA6252D9AA200C2CF11 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9FA5252D9AA200C2CF11 /* Signup.swift */; };
+		30FB9FA8252D9C3600C2CF11 /* CustomTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9FA7252D9C3600C2CF11 /* CustomTextFieldStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		30FB9F9A252D8F4A00C2CF11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30FB9F9C252D8F4A00C2CF11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30FB9FA3252D913400C2CF11 /* Signin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signin.swift; sourceTree = "<group>"; };
+		30FB9FA5252D9AA200C2CF11 /* Signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
+		30FB9FA7252D9C3600C2CF11 /* CustomTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				30FB9FA3252D913400C2CF11 /* Signin.swift */,
+				30FB9FA5252D9AA200C2CF11 /* Signup.swift */,
+				30FB9FA7252D9C3600C2CF11 /* CustomTextFieldStyle.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -158,6 +164,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				30FB9F8F252D8F4900C2CF11 /* AppDelegate.swift in Sources */,
+				30FB9FA6252D9AA200C2CF11 /* Signup.swift in Sources */,
+				30FB9FA8252D9C3600C2CF11 /* CustomTextFieldStyle.swift in Sources */,
 				30FB9F91252D8F4900C2CF11 /* SceneDelegate.swift in Sources */,
 				30FB9F93252D8F4900C2CF11 /* ContentView.swift in Sources */,
 				30FB9FA4252D913400C2CF11 /* Signin.swift in Sources */,
