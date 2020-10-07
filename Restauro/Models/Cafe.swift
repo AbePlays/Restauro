@@ -21,10 +21,17 @@ struct Cafe : Codable, Identifiable {
     var name : String
     var location : CafeLocation
     var timings : String
-    var thumb : String
+    var featured_image : String
     var phone_numbers : String
+    var cuisines : String
+    var highlights : [String]
+    var user_rating : CafeRating
 }
 
 struct CafeLocation : Codable {
     var address : String
+}
+
+struct CafeRating : Codable {
+    var aggregate_rating : String
 }

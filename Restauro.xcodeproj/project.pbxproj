@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -26,9 +26,12 @@
 		30FB9FBC252DF37C00C2CF11 /* FavRestaurantScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9FBB252DF37C00C2CF11 /* FavRestaurantScreen.swift */; };
 		30FB9FBE252E014600C2CF11 /* CafeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9FBD252E014600C2CF11 /* CafeScreen.swift */; };
 		30FB9FC0252E03E900C2CF11 /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9FBF252E03E900C2CF11 /* Cafe.swift */; };
+		30FB9FC2252E090400C2CF11 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9FC1252E090400C2CF11 /* DetailView.swift */; };
+		B7DB14DD9F1C9F05122D679F /* Pods_Restauro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C8CC1A159C1C0754ECCA8B4 /* Pods_Restauro.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		176A21BFB132D887D4A79D24 /* Pods-Restauro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restauro.debug.xcconfig"; path = "Target Support Files/Pods-Restauro/Pods-Restauro.debug.xcconfig"; sourceTree = "<group>"; };
 		30FB9F8B252D8F4900C2CF11 /* Restauro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Restauro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30FB9F8E252D8F4900C2CF11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30FB9F90252D8F4900C2CF11 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +53,9 @@
 		30FB9FBB252DF37C00C2CF11 /* FavRestaurantScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavRestaurantScreen.swift; sourceTree = "<group>"; };
 		30FB9FBD252E014600C2CF11 /* CafeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeScreen.swift; sourceTree = "<group>"; };
 		30FB9FBF252E03E900C2CF11 /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
+		30FB9FC1252E090400C2CF11 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		5DEE4382A5C329C3E958ACDC /* Pods-Restauro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restauro.release.xcconfig"; path = "Target Support Files/Pods-Restauro/Pods-Restauro.release.xcconfig"; sourceTree = "<group>"; };
+		8C8CC1A159C1C0754ECCA8B4 /* Pods_Restauro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Restauro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,17 +63,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7DB14DD9F1C9F05122D679F /* Pods_Restauro.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B59C562392F906621BE050C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				176A21BFB132D887D4A79D24 /* Pods-Restauro.debug.xcconfig */,
+				5DEE4382A5C329C3E958ACDC /* Pods-Restauro.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		2E1B252504E073C552039714 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C8CC1A159C1C0754ECCA8B4 /* Pods_Restauro.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		30FB9F82252D8F4900C2CF11 = {
 			isa = PBXGroup;
 			children = (
 				30FB9F8D252D8F4900C2CF11 /* Restauro */,
 				30FB9F8C252D8F4900C2CF11 /* Products */,
+				0B59C562392F906621BE050C /* Pods */,
+				2E1B252504E073C552039714 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +148,7 @@
 			children = (
 				30FB9FAC252DA23700C2CF11 /* HomeScreen.swift */,
 				30FB9FB1252DA28100C2CF11 /* RestaurantScreen.swift */,
+				30FB9FC1252E090400C2CF11 /* DetailView.swift */,
 				30FB9FBD252E014600C2CF11 /* CafeScreen.swift */,
 				30FB9FB6252DD02800C2CF11 /* PlaceCard.swift */,
 			);
@@ -161,9 +188,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30FB9F9F252D8F4A00C2CF11 /* Build configuration list for PBXNativeTarget "Restauro" */;
 			buildPhases = (
+				1F9ABBBEE68E379850AB3A98 /* [CP] Check Pods Manifest.lock */,
 				30FB9F87252D8F4900C2CF11 /* Sources */,
 				30FB9F88252D8F4900C2CF11 /* Frameworks */,
 				30FB9F89252D8F4900C2CF11 /* Resources */,
+				CD2F70B086510C04D51BA86C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -220,6 +249,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1F9ABBBEE68E379850AB3A98 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Restauro-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD2F70B086510C04D51BA86C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Restauro/Pods-Restauro-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Restauro/Pods-Restauro-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Restauro/Pods-Restauro-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		30FB9F87252D8F4900C2CF11 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -227,6 +298,7 @@
 			files = (
 				30FB9FBA252DDF5400C2CF11 /* Restaurant.swift in Sources */,
 				30FB9FB0252DA27300C2CF11 /* FavCafeScreen.swift in Sources */,
+				30FB9FC2252E090400C2CF11 /* DetailView.swift in Sources */,
 				30FB9FB7252DD02800C2CF11 /* PlaceCard.swift in Sources */,
 				30FB9FBE252E014600C2CF11 /* CafeScreen.swift in Sources */,
 				30FB9FC0252E03E900C2CF11 /* Cafe.swift in Sources */,
@@ -374,6 +446,7 @@
 		};
 		30FB9FA0252D8F4A00C2CF11 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 176A21BFB132D887D4A79D24 /* Pods-Restauro.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -394,6 +467,7 @@
 		};
 		30FB9FA1252D8F4A00C2CF11 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DEE4382A5C329C3E958ACDC /* Pods-Restauro.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
