@@ -22,6 +22,7 @@
 		30FB9FB2252DA28100C2CF11 /* RestaurantScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9FB1252DA28100C2CF11 /* RestaurantScreen.swift */; };
 		30FB9FB5252DA29300C2CF11 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9FB4252DA29300C2CF11 /* ProfileScreen.swift */; };
 		30FB9FB7252DD02800C2CF11 /* PlaceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9FB6252DD02800C2CF11 /* PlaceCard.swift */; };
+		30FB9FBA252DDF5400C2CF11 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9FB9252DDF5400C2CF11 /* Restaurant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		30FB9FB1252DA28100C2CF11 /* RestaurantScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantScreen.swift; sourceTree = "<group>"; };
 		30FB9FB4252DA29300C2CF11 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		30FB9FB6252DD02800C2CF11 /* PlaceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCard.swift; sourceTree = "<group>"; };
+		30FB9FB9252DDF5400C2CF11 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		30FB9F8D252D8F4900C2CF11 /* Restauro */ = {
 			isa = PBXGroup;
 			children = (
+				30FB9FB8252DDF3300C2CF11 /* Models */,
 				30FB9FB3252DA28500C2CF11 /* Profile */,
 				30FB9FAE252DA26300C2CF11 /* Favorites */,
 				30FB9FAB252DA22100C2CF11 /* Home */,
@@ -132,6 +135,14 @@
 				30FB9FB4252DA29300C2CF11 /* ProfileScreen.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		30FB9FB8252DDF3300C2CF11 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				30FB9FB9252DDF5400C2CF11 /* Restaurant.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30FB9FBA252DDF5400C2CF11 /* Restaurant.swift in Sources */,
 				30FB9FB0252DA27300C2CF11 /* CafeScreen.swift in Sources */,
 				30FB9FB7252DD02800C2CF11 /* PlaceCard.swift in Sources */,
 				30FB9F8F252D8F4900C2CF11 /* AppDelegate.swift in Sources */,
