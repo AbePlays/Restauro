@@ -16,6 +16,11 @@
 		30FB9FA4252D913400C2CF11 /* Signin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9FA3252D913400C2CF11 /* Signin.swift */; };
 		30FB9FA6252D9AA200C2CF11 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9FA5252D9AA200C2CF11 /* Signup.swift */; };
 		30FB9FA8252D9C3600C2CF11 /* CustomTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9FA7252D9C3600C2CF11 /* CustomTextFieldStyle.swift */; };
+		30FB9FAA252DA20D00C2CF11 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9FA9252DA20D00C2CF11 /* TabViewController.swift */; };
+		30FB9FAD252DA23700C2CF11 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9FAC252DA23700C2CF11 /* HomeScreen.swift */; };
+		30FB9FB0252DA27300C2CF11 /* CafeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9FAF252DA27300C2CF11 /* CafeScreen.swift */; };
+		30FB9FB2252DA28100C2CF11 /* RestaurantScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9FB1252DA28100C2CF11 /* RestaurantScreen.swift */; };
+		30FB9FB5252DA29300C2CF11 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9FB4252DA29300C2CF11 /* ProfileScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,11 @@
 		30FB9FA3252D913400C2CF11 /* Signin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signin.swift; sourceTree = "<group>"; };
 		30FB9FA5252D9AA200C2CF11 /* Signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
 		30FB9FA7252D9C3600C2CF11 /* CustomTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldStyle.swift; sourceTree = "<group>"; };
+		30FB9FA9252DA20D00C2CF11 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		30FB9FAC252DA23700C2CF11 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		30FB9FAF252DA27300C2CF11 /* CafeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeScreen.swift; sourceTree = "<group>"; };
+		30FB9FB1252DA28100C2CF11 /* RestaurantScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantScreen.swift; sourceTree = "<group>"; };
+		30FB9FB4252DA29300C2CF11 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,12 +72,16 @@
 		30FB9F8D252D8F4900C2CF11 /* Restauro */ = {
 			isa = PBXGroup;
 			children = (
+				30FB9FB3252DA28500C2CF11 /* Profile */,
+				30FB9FAE252DA26300C2CF11 /* Favorites */,
+				30FB9FAB252DA22100C2CF11 /* Home */,
 				30FB9FA2252D911D00C2CF11 /* Authentication */,
 				30FB9F8E252D8F4900C2CF11 /* AppDelegate.swift */,
 				30FB9F90252D8F4900C2CF11 /* SceneDelegate.swift */,
 				30FB9F92252D8F4900C2CF11 /* ContentView.swift */,
 				30FB9F94252D8F4A00C2CF11 /* Assets.xcassets */,
 				30FB9F99252D8F4A00C2CF11 /* LaunchScreen.storyboard */,
+				30FB9FA9252DA20D00C2CF11 /* TabViewController.swift */,
 				30FB9F9C252D8F4A00C2CF11 /* Info.plist */,
 				30FB9F96252D8F4A00C2CF11 /* Preview Content */,
 			);
@@ -90,6 +104,31 @@
 				30FB9FA7252D9C3600C2CF11 /* CustomTextFieldStyle.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		30FB9FAB252DA22100C2CF11 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				30FB9FAC252DA23700C2CF11 /* HomeScreen.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		30FB9FAE252DA26300C2CF11 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				30FB9FAF252DA27300C2CF11 /* CafeScreen.swift */,
+				30FB9FB1252DA28100C2CF11 /* RestaurantScreen.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		30FB9FB3252DA28500C2CF11 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				30FB9FB4252DA29300C2CF11 /* ProfileScreen.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,11 +202,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30FB9FB0252DA27300C2CF11 /* CafeScreen.swift in Sources */,
 				30FB9F8F252D8F4900C2CF11 /* AppDelegate.swift in Sources */,
+				30FB9FB2252DA28100C2CF11 /* RestaurantScreen.swift in Sources */,
 				30FB9FA6252D9AA200C2CF11 /* Signup.swift in Sources */,
+				30FB9FB5252DA29300C2CF11 /* ProfileScreen.swift in Sources */,
 				30FB9FA8252D9C3600C2CF11 /* CustomTextFieldStyle.swift in Sources */,
 				30FB9F91252D8F4900C2CF11 /* SceneDelegate.swift in Sources */,
+				30FB9FAD252DA23700C2CF11 /* HomeScreen.swift in Sources */,
 				30FB9F93252D8F4900C2CF11 /* ContentView.swift in Sources */,
+				30FB9FAA252DA20D00C2CF11 /* TabViewController.swift in Sources */,
 				30FB9FA4252D913400C2CF11 /* Signin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
