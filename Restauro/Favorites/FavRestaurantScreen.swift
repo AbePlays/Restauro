@@ -1,5 +1,5 @@
 //
-//  CafeScreen.swift
+//  FavRestaurantScreen.swift
 //  Restauro
 //
 //  Created by Abhishek Rawat on 07/10/20.
@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-struct CafeScreen: View {
+struct FavRestaurantScreen: View {
     var body: some View {
-        Text("Cafe Screen")
+        Text("Res Screen")
     }
 }
 
-struct CafeScreen_Previews: PreviewProvider {
+struct FavRestaurantScreen_Previews: PreviewProvider {
     static var previews: some View {
-        CafeScreen()
+        FavRestaurantScreen()
     }
 }

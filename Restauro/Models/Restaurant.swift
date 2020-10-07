@@ -8,15 +8,16 @@
 
 import Foundation
 
-struct Restaurants : Codable {
-    var restaurants : [RestaurantObject]
+struct decodeRestaurant : Codable {
+    var restaurants : [Restaurants]
 }
 
-struct RestaurantObject : Codable {
+struct Restaurants : Codable {
     var restaurant : Restaurant
 }
 
-struct Restaurant : Codable {
+struct Restaurant : Codable, Identifiable {
+    var id : Int
     var name : String
     var location : Location
     var timings : String

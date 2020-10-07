@@ -12,9 +12,14 @@ struct RestaurantScreen: View {
     @State var res = [Restaurants]()
     var body: some View {
         VStack {
-            Text("Hello")
-            Text("\(res.count)")
+            List {
+                ForEach(res, id:\.restaurant.id) { r in
+                    Text(r.restaurant.name)
+                }
+            }
+            
         }.onAppear(perform: getRestaurants)
+        .navigationBarTitle("Restaurants")
     }
     
     func getRestaurants() {
@@ -22,10 +27,10 @@ struct RestaurantScreen: View {
             print("Invalid URL")
             return
         }
-
+        
         var request = URLRequest(url: url)
-        request.setValue("", forHTTPHeaderField: "user-key")
-
+        request.setValue("769b6fd0922075ca2e09b01738beee74", forHTTPHeaderField: "user-key")
+        
         URLSession.shared.dataTask(with: request) { data, response, error in
             if error != nil {
                 print("\(error!.localizedDescription)")
@@ -33,11 +38,9 @@ struct RestaurantScreen: View {
             }
             
             if let data = data {
-                print("Data", data)
-                if let decodedResponse = try? JSONDecoder().decode(Restaurants.self, from: data) {
-                    print("Decoded Response : ", decodedResponse)
+                if let decodedResponse = try? JSONDecoder().decode(decodeRestaurant.self, from: data) {
                     DispatchQueue.main.async {
-                        self.res.append(decodedResponse)
+                        self.res = decodedResponse.restaurants
                     }
                     return
                 }

@@ -13,9 +13,9 @@ struct TabViewController: View {
         TabView {
             HomeScreen()
                 .tabItem({Image(systemName: "house.fill")})
-            CafeScreen()
+            FavCafeScreen()
                 .tabItem({Image(systemName: "burst.fill")})
-            RestaurantScreen()
+            FavRestaurantScreen()
                 .tabItem({Image(systemName: "smallcircle.fill.circle.fill")})
             ProfileScreen()
                 .tabItem({Image(systemName: "person.fill")})
