@@ -33,6 +33,7 @@ struct FavoriteCafe : View {
                     self.user.favoriteCafes.append(self.restaurant)
                     print("is not Fav = ", self.user.favoriteCafes.count)
                 }
+                self.user.saveDataToFirestore()
                 self.isFav.toggle()
         }
     }

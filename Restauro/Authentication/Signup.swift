@@ -10,6 +10,7 @@ import SwiftUI
 import Firebase
 
 struct Signup: View {
+    @EnvironmentObject var user : User
     @Binding var isLoggedIn : Bool
     @State var name : String = ""
     @State var email : String = ""
@@ -82,6 +83,8 @@ struct Signup: View {
                         "favoriteCafes" : [],
                         "favoriteRestaurants" : []
                     ])
+                    self.user.uid = res.user.uid
+                    self.user.loadDataFromFirebase()
                 }
                 self.isLoggedIn = true
             }

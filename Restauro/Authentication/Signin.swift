@@ -63,6 +63,10 @@ struct Signin: View {
             if error != nil {
                 print("\(error?.localizedDescription ?? "Problem with signing in")")
             } else {
+                if let res = result {
+                    self.user.uid = res.user.uid
+                    self.user.loadDataFromFirebase()
+                }
                 self.isLoggedIn = true
             }
         }

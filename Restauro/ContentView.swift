@@ -12,10 +12,10 @@ import Firebase
 struct ContentView: View {
     @ObservedObject var user = User()
     @State var isLoggedIn = false
-    @State var loading = true
+    @State var checking = true
     var body: some View {
         Group {
-            if !loading {
+            if !checking {
                 if isLoggedIn {
                     TabViewController(isLoggedIn: $isLoggedIn).environmentObject(user)
                 } else {
@@ -30,11 +30,11 @@ struct ContentView: View {
     func checkUser() {
         let result = Auth.auth().currentUser
         if result != nil {
+            self.user.uid = result!.uid
+            self.user.loadDataFromFirebase()
             self.isLoggedIn = true
-        } else {
-            
         }
-        self.loading = false
+        self.checking = false
     }
 }
 

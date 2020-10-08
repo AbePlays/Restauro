@@ -31,6 +31,7 @@ struct FavoriteRestaurant : View {
                 } else {
                     self.user.favoriteRestaurants.append(self.restaurant)
                 }
+                self.user.saveDataToFirestore()
                 self.isFav.toggle()
         }
     }
