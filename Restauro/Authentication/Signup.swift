@@ -32,12 +32,15 @@ struct Signup: View {
                     .textFieldStyle(CustomTextFieldStyle())
                     .padding(.bottom, 10)
                 TextField("Email", text: $email)
+                    .autocapitalization(.none)
                     .textFieldStyle(CustomTextFieldStyle())
                     .padding(.bottom, 10)
                 SecureField("Password", text: $password)
+                    .autocapitalization(.none)
                     .textFieldStyle(CustomTextFieldStyle())
                     .padding(.bottom, 10)
                 SecureField("Confirm Password", text: $confirmPassword)
+                    .autocapitalization(.none)
                     .textFieldStyle(CustomTextFieldStyle())
                     .padding(.bottom, 10)
                 ZStack {
@@ -72,6 +75,14 @@ struct Signup: View {
             if error != nil {
                 print("\(error?.localizedDescription ?? "Problem while signing up")")
             } else {
+                if let res = result {
+                    Firestore.firestore().collection("users").document(res.user.uid).setData([
+                        "name" : self.name,
+                        "email" : self.email,
+                        "favoriteCafes" : [],
+                        "favoriteRestaurants" : []
+                    ])
+                }
                 self.isLoggedIn = true
             }
         }
