@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct ProfileScreen: View {
+    @Binding var isLoggedIn : Bool
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -73,11 +75,6 @@ struct ProfileScreen: View {
     
     func handleSignout() {
         print("Sign out")
-    }
-}
-
-struct ProfileScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileScreen()
+        self.isLoggedIn = false
     }
 }

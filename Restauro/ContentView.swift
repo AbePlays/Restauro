@@ -9,8 +9,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isLoggedIn = false
     var body: some View {
-        HomeScreen()
+        Group {
+            if isLoggedIn {
+                TabViewController(isLoggedIn: $isLoggedIn)
+            } else {
+                Signin(isLoggedIn: $isLoggedIn)
+            }
+        }
     }
 }
 

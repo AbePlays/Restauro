@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct Signin: View {
+    @Binding var isLoggedIn : Bool
     @State var email : String = ""
     @State var password : String = ""
     
@@ -31,13 +32,14 @@ struct Signin: View {
                         .padding(.bottom, 10)
                     ZStack {
                         Color.green.frame(height: 50).cornerRadius(5)
-                        Text("Log in").foregroundColor(.white).onTapGesture(perform: loginHandler)
+                        Text("Log in").foregroundColor(.white)
                     }
+                    .onTapGesture(perform: loginHandler)
                     .padding(.bottom, 10)
                     HStack {
                         Spacer()
                         Text("Don't have an account?")
-                        NavigationLink(destination : Signup()) {
+                        NavigationLink(destination : Signup(isLoggedIn: $isLoggedIn)) {
                             Text("Sign up").foregroundColor(.green)
                         }
                         Spacer()
@@ -53,11 +55,6 @@ struct Signin: View {
     
     func loginHandler() {
         print("I was pressed!!")
-    }
-}
-
-struct Signin_Previews: PreviewProvider {
-    static var previews: some View {
-        Signin()
+        self.isLoggedIn = true
     }
 }

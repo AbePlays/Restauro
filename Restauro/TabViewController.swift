@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct TabViewController: View {
+    @Binding var isLoggedIn : Bool
     var body: some View {
         TabView {
             HomeScreen()
@@ -17,14 +18,8 @@ struct TabViewController: View {
                 .tabItem({Image(systemName: "burst.fill")})
             FavRestaurantScreen()
                 .tabItem({Image(systemName: "smallcircle.fill.circle.fill")})
-            ProfileScreen()
+            ProfileScreen(isLoggedIn: $isLoggedIn)
                 .tabItem({Image(systemName: "person.fill")})
         }.accentColor(.green)
-    }
-}
-
-struct TabViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        TabViewController()
     }
 }
