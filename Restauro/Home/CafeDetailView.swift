@@ -83,18 +83,3 @@ struct CafeDetailView: View {
         isFav = false
     }
 }
-
-struct CafeDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        CafeDetailView(restaurant: Cafe(
-            id: "1",
-            name: "The Bong Twist",
-            location: CafeLocation(address: "Victory Point Tower, Level 3, Ballupur Chowk, Ballupur Flyover, Chakrata Road, Ballupur, Dehradun"),
-            timings: "9am – 10:30pm (Mon-Sun)",
-            featured_image: "https://b.zmtcdn.com/data/pictures/6/18415696/3bcf9cbab02fa2f055e5ebb100cd3a9b.jpg",
-            phone_numbers: "+91 9899201907",
-            cuisines: "Bengali, Seafood",
-            user_rating: CafeRating(votes: 69, rating_obj: CafeTitle(title: CafeText(text: "3.9"))))
-        )
-    }
-}

@@ -9,8 +9,23 @@
 import SwiftUI
 
 struct FavCafeScreen: View {
+    @EnvironmentObject var user : User
     var body: some View {
-        Text("Cafe Screen")
+        NavigationView {
+            ScrollView {
+                VStack {
+                    if user.favoriteCafes.count == 0 {
+                        Text("No favorites selected").font(.title)
+                    } else {
+                        ForEach(user.favoriteCafes, id: \.id) { c in
+                            NavigationLink(destination: CafeDetailView(restaurant: c)) {
+                                CafeListView(cafe: c)
+                            }.buttonStyle(PlainButtonStyle())
+                        }
+                    }
+                }.padding(.top, 20)
+            }.navigationBarTitle("Favorite Cafes")
+        }
     }
 }
 
