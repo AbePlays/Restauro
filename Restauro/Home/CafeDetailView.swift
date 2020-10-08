@@ -9,7 +9,37 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
+struct FavoriteCafe : View {
+    @EnvironmentObject var user : User
+    var restaurant : Cafe
+    var iconName : String
+    @Binding var isFav : Bool
+    var body : some View {
+        ZStack {
+            Color.white.frame(width: 50, height: 50).cornerRadius(25)
+            Image(systemName: iconName)
+                .foregroundColor(.red)
+                .font(.system(size: 30))
+                .padding()
+        }.padding(5)
+            .onTapGesture {
+                if self.isFav {
+                    let index : Int = self.user.favoriteCafes.firstIndex { (c) -> Bool in
+                        c.name == self.restaurant.name
+                    }!
+                    self.user.favoriteCafes.remove(at: index)
+                    print("isFav = ", self.user.favoriteCafes.count)
+                } else {
+                    self.user.favoriteCafes.append(self.restaurant)
+                    print("is not Fav = ", self.user.favoriteCafes.count)
+                }
+                self.isFav.toggle()
+        }
+    }
+}
+
 struct CafeDetailView: View {
+    @EnvironmentObject var user : User
     var restaurant : Cafe
     @State var isFav = true
     
@@ -21,7 +51,7 @@ struct CafeDetailView: View {
                 .frame(width: UIScreen.main.bounds.width, alignment: .center)
                 .overlay(
                     isFav ?
-                        Favorite(iconName: "heart.fill", isFav: $isFav) : Favorite(iconName: "heart", isFav: $isFav)
+                        FavoriteCafe(restaurant: restaurant, iconName: "heart.fill", isFav: $isFav) : FavoriteCafe(restaurant :restaurant, iconName: "heart", isFav: $isFav)
                     , alignment: .bottomTrailing)
             
             VStack(alignment: .leading, spacing: 10) {
@@ -40,7 +70,17 @@ struct CafeDetailView: View {
             }.padding()
             
             Spacer()
+        }.onAppear(perform: calcFav)
+    }
+    
+    func calcFav() {
+        for c in user.favoriteCafes {
+            if c.name == restaurant.name {
+                isFav = true
+                return
+            }
         }
+        isFav = false
     }
 }
 

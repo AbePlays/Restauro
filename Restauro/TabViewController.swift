@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct TabViewController: View {
+    @EnvironmentObject var user : User
     @Binding var isLoggedIn : Bool
     var body: some View {
         TabView {
@@ -21,5 +22,6 @@ struct TabViewController: View {
             ProfileScreen(isLoggedIn: $isLoggedIn)
                 .tabItem({Image(systemName: "person.fill")})
         }.accentColor(.green)
+        .environmentObject(user)
     }
 }

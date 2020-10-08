@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct Signin: View {
+    @EnvironmentObject var user : User
     @Binding var isLoggedIn : Bool
     @State var email : String = ""
     @State var password : String = ""
@@ -39,7 +40,7 @@ struct Signin: View {
                     HStack {
                         Spacer()
                         Text("Don't have an account?")
-                        NavigationLink(destination : Signup(isLoggedIn: $isLoggedIn)) {
+                        NavigationLink(destination : Signup(isLoggedIn: $isLoggedIn).environmentObject(user)) {
                             Text("Sign up").foregroundColor(.green)
                         }
                         Spacer()
@@ -56,5 +57,6 @@ struct Signin: View {
     func loginHandler() {
         print("I was pressed!!")
         self.isLoggedIn = true
+        user.name = "AbeTheBabe"
     }
 }

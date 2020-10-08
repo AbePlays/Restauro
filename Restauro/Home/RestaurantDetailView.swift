@@ -9,7 +9,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct Favorite : View {
+struct FavoriteRestaurant : View {
     var iconName : String
     @Binding var isFav : Bool
     var body : some View {
@@ -27,6 +27,7 @@ struct Favorite : View {
 }
 
 struct RestaurantDetailView: View {
+    @EnvironmentObject var user : User
     var restaurant : Restaurant
     @State var isFav = true
     
@@ -38,7 +39,7 @@ struct RestaurantDetailView: View {
                 .frame(width: UIScreen.main.bounds.width, alignment: .center)
                 .overlay(
                     isFav ?
-                        Favorite(iconName: "heart.fill", isFav: $isFav) : Favorite(iconName: "heart", isFav: $isFav)
+                        FavoriteRestaurant(iconName: "heart.fill", isFav: $isFav) : FavoriteRestaurant(iconName: "heart", isFav: $isFav)
                     , alignment: .bottomTrailing)
             
             VStack(alignment: .leading, spacing: 10) {
@@ -58,6 +59,10 @@ struct RestaurantDetailView: View {
             
             Spacer()
         }
+    }
+    
+    func calcFav() {
+        
     }
 }
 

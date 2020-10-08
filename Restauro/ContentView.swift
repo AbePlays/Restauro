@@ -9,13 +9,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var user = User()
     @State var isLoggedIn = false
     var body: some View {
         Group {
             if isLoggedIn {
-                TabViewController(isLoggedIn: $isLoggedIn)
+                TabViewController(isLoggedIn: $isLoggedIn).environmentObject(user)
             } else {
-                Signin(isLoggedIn: $isLoggedIn)
+                Signin(isLoggedIn: $isLoggedIn).environmentObject(user)
             }
         }
     }

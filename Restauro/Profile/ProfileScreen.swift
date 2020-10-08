@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ProfileScreen: View {
+    @EnvironmentObject var user : User
     @Binding var isLoggedIn : Bool
     
     var body: some View {
@@ -22,7 +23,7 @@ struct ProfileScreen: View {
                     .frame(height: 200)
                     .padding(.vertical, 20)
                 
-                Text("Hi, dude").font(.title)
+                Text("Hi, \(user.name)").font(.title)
                 
                 
                 NavigationLink(destination : Text("Hi")) {
