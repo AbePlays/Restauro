@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>762059893177-93fnr3p218oprannr3u7bt4b45u3k5lh.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.762059893177-93fnr3p218oprannr3u7bt4b45u3k5lh</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBBS3yUkAd5dxfmPj34FN8OqHpwMMmCJ0E</string>
+	<key>GCM_SENDER_ID</key>
+	<string>762059893177</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.imadeitmyself.Restauro</string>
+	<key>PROJECT_ID</key>
+	<string>restauro-9be73</string>
+	<key>STORAGE_BUCKET</key>
+	<string>restauro-9be73.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:762059893177:ios:eb6c58a21f747321b06e68</string>
+	<key>DATABASE_URL</key>
+	<string>https://restauro-9be73.firebaseio.com</string>
+</dict>
+</plist>

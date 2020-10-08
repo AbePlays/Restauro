@@ -11,6 +11,7 @@
 		303709FF252F003700241206 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303709FE252F003700241206 /* User.swift */; };
 		30370A03252F3ABC00241206 /* CafeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30370A02252F3ABC00241206 /* CafeListView.swift */; };
 		30370A05252F43C600241206 /* RestaurantListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30370A04252F43C600241206 /* RestaurantListView.swift */; };
+		30370A07252F4B0B00241206 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30370A06252F4B0B00241206 /* GoogleService-Info.plist */; };
 		30FB9F8F252D8F4900C2CF11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9F8E252D8F4900C2CF11 /* AppDelegate.swift */; };
 		30FB9F91252D8F4900C2CF11 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9F90252D8F4900C2CF11 /* SceneDelegate.swift */; };
 		30FB9F93252D8F4900C2CF11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FB9F92252D8F4900C2CF11 /* ContentView.swift */; };
@@ -40,6 +41,7 @@
 		303709FE252F003700241206 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		30370A02252F3ABC00241206 /* CafeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeListView.swift; sourceTree = "<group>"; };
 		30370A04252F43C600241206 /* RestaurantListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListView.swift; sourceTree = "<group>"; };
+		30370A06252F4B0B00241206 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30FB9F8B252D8F4900C2CF11 /* Restauro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Restauro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30FB9F8E252D8F4900C2CF11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30FB9F90252D8F4900C2CF11 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				30FB9F99252D8F4A00C2CF11 /* LaunchScreen.storyboard */,
 				30FB9FA9252DA20D00C2CF11 /* TabViewController.swift */,
 				30FB9F9C252D8F4A00C2CF11 /* Info.plist */,
+				30370A06252F4B0B00241206 /* GoogleService-Info.plist */,
 				30FB9F96252D8F4A00C2CF11 /* Preview Content */,
 			);
 			path = Restauro;
@@ -262,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30FB9F9B252D8F4A00C2CF11 /* LaunchScreen.storyboard in Resources */,
+				30370A07252F4B0B00241206 /* GoogleService-Info.plist in Resources */,
 				30FB9F98252D8F4A00C2CF11 /* Preview Assets.xcassets in Resources */,
 				30FB9F95252D8F4A00C2CF11 /* Assets.xcassets in Resources */,
 			);
