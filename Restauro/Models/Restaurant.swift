@@ -24,7 +24,6 @@ struct Restaurant : Codable, Identifiable {
     var featured_image : String
     var phone_numbers : String
     var cuisines : String
-    var highlights : [String]
     var user_rating : RestaurantRating
 }
 
@@ -34,4 +33,5 @@ struct Location : Codable {
 
 struct RestaurantRating : Codable {
     var aggregate_rating : String
+    var votes : Int
 }

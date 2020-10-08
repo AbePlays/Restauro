@@ -26,7 +26,7 @@ struct Favorite : View {
     }
 }
 
-struct DetailView: View {
+struct RestaurantDetailView: View {
     var restaurant : Restaurant
     @State var isFav = true
     
@@ -41,13 +41,13 @@ struct DetailView: View {
                         Favorite(iconName: "heart.fill", isFav: $isFav) : Favorite(iconName: "heart", isFav: $isFav)
                     , alignment: .bottomTrailing)
             
-            
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
                     Text(restaurant.name).font(.title).bold()
                     Spacer()
                     Image(systemName: "star.fill").foregroundColor(.yellow).font(.system(size: 15))
                     Text(restaurant.user_rating.aggregate_rating).font(.system(size: 17))
+                    Text("(\(restaurant.user_rating.votes))").font(.system(size: 17)).foregroundColor(.gray)
                 }
                 Text("Address : \(restaurant.location.address)").font(.subheadline).opacity(0.5)
                 Text("Timings : \(restaurant.timings)").font(.subheadline).opacity(0.5)
@@ -61,9 +61,9 @@ struct DetailView: View {
     }
 }
 
-struct DetailView_Previews: PreviewProvider {
+struct RestaurantDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(restaurant: Restaurant(
+        RestaurantDetailView(restaurant: Restaurant(
             id: 1,
             name: "The Bong Twist",
             location: Location(address: "Victory Point Tower, Level 3, Ballupur Chowk, Ballupur Flyover, Chakrata Road, Ballupur, Dehradun"),
@@ -71,21 +71,7 @@ struct DetailView_Previews: PreviewProvider {
             featured_image: "https://b.zmtcdn.com/data/pictures/6/18415696/3bcf9cbab02fa2f055e5ebb100cd3a9b.jpg",
             phone_numbers: "+91 9899201907",
             cuisines: "Bengali, Seafood",
-            highlights: [
-                "Lunch",
-                "Cash",
-                "Delivery",
-                "Credit Card",
-                "No Alcohol Available",
-                "Dinner",
-                "Takeaway Available",
-                "Debit Card",
-                "Indoor Seating",
-                "Table booking recommended",
-                "Digital Payments Accepted",
-                "Smoking Area"
-            ],
-            user_rating: RestaurantRating(aggregate_rating: "4.1"))
+            user_rating: RestaurantRating(aggregate_rating: "4.1", votes: 69))
         )
     }
 }

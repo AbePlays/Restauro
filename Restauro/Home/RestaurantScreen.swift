@@ -14,7 +14,9 @@ struct RestaurantScreen: View {
         VStack {
             List {
                 ForEach(res, id:\.restaurant.id) { r in
-                    Text(r.restaurant.name)
+                    NavigationLink(destination: RestaurantDetailView(restaurant: r.restaurant)) {
+                        Text(r.restaurant.name)
+                    }
                 }
             }
             
