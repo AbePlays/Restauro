@@ -41,7 +41,6 @@ struct CafeScreen: View {
             
             if let data = data {
                 if let decodedResponse = try? JSONDecoder().decode(decodeCafe.self, from: data) {
-                    print("Decoded Data = ", decodedResponse)
                     DispatchQueue.main.async {
                         self.cafes = decodedResponse.restaurants
                     }

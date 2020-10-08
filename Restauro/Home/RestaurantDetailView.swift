@@ -10,6 +10,8 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct FavoriteRestaurant : View {
+    @EnvironmentObject var user : User
+    var restaurant : Restaurant
     var iconName : String
     @Binding var isFav : Bool
     var body : some View {
@@ -21,6 +23,14 @@ struct FavoriteRestaurant : View {
                 .padding()
         }.padding(5)
             .onTapGesture {
+                if self.isFav {
+                    let index : Int = self.user.favoriteRestaurants.firstIndex { r -> Bool in
+                        r.name == self.restaurant.name
+                    }!
+                    self.user.favoriteRestaurants.remove(at: index)
+                } else {
+                    self.user.favoriteRestaurants.append(self.restaurant)
+                }
                 self.isFav.toggle()
         }
     }
@@ -39,7 +49,7 @@ struct RestaurantDetailView: View {
                 .frame(width: UIScreen.main.bounds.width, alignment: .center)
                 .overlay(
                     isFav ?
-                        FavoriteRestaurant(iconName: "heart.fill", isFav: $isFav) : FavoriteRestaurant(iconName: "heart", isFav: $isFav)
+                        FavoriteRestaurant(restaurant: restaurant, iconName: "heart.fill", isFav: $isFav) : FavoriteRestaurant(restaurant: restaurant, iconName: "heart", isFav: $isFav)
                     , alignment: .bottomTrailing)
             
             VStack(alignment: .leading, spacing: 10) {
@@ -58,11 +68,17 @@ struct RestaurantDetailView: View {
             }.padding()
             
             Spacer()
-        }
+        }.onAppear(perform: calcFav)
     }
     
     func calcFav() {
-        
+        for r in user.favoriteRestaurants {
+            if r.name == restaurant.name {
+                isFav = true
+                return
+            }
+        }
+        isFav = false
     }
 }
 
