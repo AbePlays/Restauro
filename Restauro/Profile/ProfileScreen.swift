@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ProfileScreen: View {
     @EnvironmentObject var user : User
@@ -75,7 +76,12 @@ struct ProfileScreen: View {
     }
     
     func handleSignout() {
-        print("Sign out")
-        self.isLoggedIn = false
+        print("Inside Signout Handler")
+        do {
+            try Auth.auth().signOut()
+            self.isLoggedIn = false
+        } catch {
+            print("Error signing out")
+        }
     }
 }

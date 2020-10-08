@@ -7,18 +7,34 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
     @ObservedObject var user = User()
     @State var isLoggedIn = false
+    @State var loading = true
     var body: some View {
         Group {
-            if isLoggedIn {
-                TabViewController(isLoggedIn: $isLoggedIn).environmentObject(user)
+            if !loading {
+                if isLoggedIn {
+                    TabViewController(isLoggedIn: $isLoggedIn).environmentObject(user)
+                } else {
+                    Signin(isLoggedIn: $isLoggedIn).environmentObject(user)
+                }
             } else {
-                Signin(isLoggedIn: $isLoggedIn).environmentObject(user)
+                Text("Restauro").bold().font(.largeTitle)
             }
+        }.onAppear(perform: checkUser)
+    }
+    
+    func checkUser() {
+        let result = Auth.auth().currentUser
+        if result != nil {
+            self.isLoggedIn = true
+        } else {
+            
         }
+        self.loading = false
     }
 }
 
