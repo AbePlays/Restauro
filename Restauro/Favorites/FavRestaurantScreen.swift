@@ -9,8 +9,23 @@
 import SwiftUI
 
 struct FavRestaurantScreen: View {
+    @EnvironmentObject var user : User
     var body: some View {
-        Text("Res Screen")
+        NavigationView {
+            ScrollView {
+                VStack {
+                    if user.favoriteRestaurants.count == 0 {
+                        Text("No favorites selected").font(.title)
+                    } else {
+                        ForEach(user.favoriteRestaurants, id: \.id) { r in
+                            NavigationLink(destination: RestaurantDetailView(restaurant: r)) {
+                                RestaurantListView(restaurant: r)
+                            }.buttonStyle(PlainButtonStyle())
+                        }
+                    }
+                }.padding(.top, 20)
+            }.navigationBarTitle("Favorite Restaurants")
+        }
     }
 }
 
