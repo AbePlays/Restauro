@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct Signup: View {
     @Binding var isLoggedIn : Bool
@@ -66,7 +67,13 @@ struct Signup: View {
     }
     
     func signupHandler() {
-        print("I was pressed!!")
-        self.isLoggedIn = true
+        print("Inside Signup Handler")
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if error != nil {
+                print("\(error?.localizedDescription ?? "Problem while signing up")")
+            } else {
+                self.isLoggedIn = true
+            }
+        }
     }
 }

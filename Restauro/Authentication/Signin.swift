@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct Signin: View {
     @EnvironmentObject var user : User
@@ -26,9 +27,11 @@ struct Signin: View {
                     Image("login").resizable().scaledToFit()
                         .padding(.vertical, 50)
                     TextField("Email", text: $email)
+                        .autocapitalization(.none)
                         .textFieldStyle(CustomTextFieldStyle())
                         .padding(.bottom, 10)
                     SecureField("Password", text: $password)
+                        .autocapitalization(.none)
                         .textFieldStyle(CustomTextFieldStyle())
                         .padding(.bottom, 10)
                     ZStack {
@@ -55,8 +58,13 @@ struct Signin: View {
     }
     
     func loginHandler() {
-        print("I was pressed!!")
-        self.isLoggedIn = true
-        user.name = "AbeTheBabe"
+        print("Inside Login Handler")
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            if error != nil {
+                print("\(error?.localizedDescription ?? "Problem with signing in")")
+            } else {
+                self.isLoggedIn = true
+            }
+        }
     }
 }
