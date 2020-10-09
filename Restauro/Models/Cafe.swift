@@ -21,8 +21,8 @@ struct Cafe : Codable, Identifiable {
     var name : String
     var location : CafeLocation
     var timings : String
-    var featured_image : String
-    var thumb : String
+    var featured_image : String?
+    var thumb : String?
     var phone_numbers : String
     var cuisines : String
     var user_rating : CafeRating

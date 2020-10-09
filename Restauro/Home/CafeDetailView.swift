@@ -46,8 +46,10 @@ struct CafeDetailView: View {
     
     var body: some View {
         VStack {
-            WebImage(url: URL(string: restaurant.featured_image)!)
+            WebImage(url: URL(string: restaurant.featured_image ?? "https://fitmirchi.com/admin/assets/images/image_not_available.png"))
                 .resizable()
+                .placeholder(Image("placeholder_food"))
+                .indicator(.activity)
                 .scaledToFit()
                 .frame(width: UIScreen.main.bounds.width, alignment: .center)
                 .overlay(
@@ -63,7 +65,7 @@ struct CafeDetailView: View {
                     Text(restaurant.user_rating.rating_obj.title.text).font(.system(size: 17))
                     Text("(\(restaurant.user_rating.votes))").font(.system(size: 17)).foregroundColor(.gray)
                 }
-                Text("Address : \(restaurant.location.address)").font(.subheadline).opacity(0.5)
+                Text("Address : \(restaurant.location.address)").bold().font(.subheadline).opacity(0.5)
                 Text("Timings : \(restaurant.timings)").font(.subheadline).opacity(0.5)
                 Text("Phone Number : \(restaurant.phone_numbers)").font(.subheadline).opacity(0.5)
                 Text("Cuisines : \(restaurant.cuisines)").font(.subheadline).opacity(0.5)

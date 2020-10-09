@@ -13,8 +13,10 @@ struct RestaurantListView: View {
     var restaurant : Restaurant
     var body: some View {
         HStack(alignment: .top) {
-            WebImage(url: URL(string: restaurant.thumb)!)
+            WebImage(url: URL(string: restaurant.thumb ?? "https://fitmirchi.com/admin/assets/images/image_not_available.png"))
                 .resizable()
+                .placeholder(Image("placeholder_food"))
+                .indicator(.activity)
                 .scaledToFit()
                 .frame(width: 80, alignment: .center)
                 .cornerRadius(10)

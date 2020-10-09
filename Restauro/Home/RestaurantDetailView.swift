@@ -26,7 +26,7 @@ struct FavoriteRestaurant : View {
                 if self.isFav {
                     let index : Int = self.user.favoriteRestaurants.firstIndex { r -> Bool in
                         r.name == self.restaurant.name
-                    }!
+                        }!
                     self.user.favoriteRestaurants.remove(at: index)
                 } else {
                     self.user.favoriteRestaurants.append(self.restaurant)
@@ -44,8 +44,10 @@ struct RestaurantDetailView: View {
     
     var body: some View {
         VStack {
-            WebImage(url: URL(string: restaurant.featured_image)!)
+            WebImage(url: URL(string: restaurant.featured_image ?? "https://fitmirchi.com/admin/assets/images/image_not_available.png"))
                 .resizable()
+                .placeholder(Image("placeholder_food"))
+                .indicator(.activity)
                 .scaledToFit()
                 .frame(width: UIScreen.main.bounds.width, alignment: .center)
                 .overlay(
@@ -61,7 +63,7 @@ struct RestaurantDetailView: View {
                     Text(restaurant.user_rating.aggregate_rating).font(.system(size: 17))
                     Text("(\(restaurant.user_rating.votes))").font(.system(size: 17)).foregroundColor(.gray)
                 }
-                Text("Address : \(restaurant.location.address)").font(.subheadline).opacity(0.5)
+                Text("Address : \(restaurant.location.address)").bold().font(.subheadline).opacity(0.5)
                 Text("Timings : \(restaurant.timings)").font(.subheadline).opacity(0.5)
                 Text("Phone Number : \(restaurant.phone_numbers)").font(.subheadline).opacity(0.5)
                 Text("Cuisines : \(restaurant.cuisines)").font(.subheadline).opacity(0.5)
