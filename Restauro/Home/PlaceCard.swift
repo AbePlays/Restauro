@@ -15,10 +15,13 @@ struct PlaceCard: View {
         VStack(spacing: 20) {
             Image(iconName).resizable().scaledToFit()
             Text(place).font(.headline).bold()
-        }.frame(width: 150, height: 180)
-            .padding(.horizontal, 40)
-            .padding(.vertical, 40)
-            .border(Color.black, width: 2)
+        }
+        .frame(width: 150, height: 180)
+        .padding(30)
+        .background(Color.white)
+        .cornerRadius(10)
+        .shadow(radius: 3)
+        .padding(10)
     }
 }
 

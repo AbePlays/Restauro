@@ -10,6 +10,8 @@ import SwiftUI
 
 struct HomeScreen: View {
     @EnvironmentObject var user : User
+    @State var changeCity = false
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
@@ -17,7 +19,9 @@ struct HomeScreen: View {
                     Image(systemName : "mappin.and.ellipse").foregroundColor(.orange).padding(.trailing, 5)
                     Text(user.city).font(.headline)
                     Spacer()
-                    Image(systemName: "magnifyingglass").font(.system(size: 25)).padding(.trailing, 10)
+                    Image(systemName: "magnifyingglass").font(.system(size: 25)).padding(.trailing, 10).onTapGesture {
+                        self.changeCity = true
+                    }
                     Image("person").resizable().scaledToFit().frame(width: 35).cornerRadius(25)
                 }
                 
@@ -34,9 +38,27 @@ struct HomeScreen: View {
                     }
                 }
                 Spacer()
-            }.padding()
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
+            }
+            .padding()
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
+        }
+        .sheet(isPresented: $changeCity) {
+            VStack {
+                Spacer()
+                Text("Change City").font(.largeTitle).bold().padding(.bottom, 30)
+                TextField("City...", text: self.$user.city)
+                    .textFieldStyle(CustomTextFieldStyle())
+                    .padding(.bottom, 20)
+                ZStack {
+                    Color.green.frame(height: 50).cornerRadius(5)
+                    Text("Save").foregroundColor(.white).bold()
+                }.onTapGesture {
+                    self.changeCity = false
+                    self.user.saveDataToFirestore()
+                }
+                Spacer()
+            }.padding(50)
         }
     }
 }
