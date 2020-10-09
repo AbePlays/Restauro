@@ -22,7 +22,7 @@ struct HomeScreen: View {
                         Image(systemName : "mappin.and.ellipse").foregroundColor(.orange).padding(.trailing, 5)
                         Text(user.city).font(.headline)
                         Spacer()
-                        Image(systemName: "magnifyingglass").font(.system(size: 25)).padding(.trailing, 10).onTapGesture {
+                        Image(systemName: "pencil.tip.crop.circle").font(.system(size: 25)).padding(.trailing, 10).onTapGesture {
                             self.changeCity = true
                         }
                         Image("person").resizable().scaledToFit().frame(width: 35).cornerRadius(25)
