@@ -79,6 +79,7 @@ struct ProfileScreen: View {
         print("Inside Signout Handler")
         do {
             try Auth.auth().signOut()
+            self.user.deleteUser()
             self.isLoggedIn = false
         } catch {
             print("Error signing out")

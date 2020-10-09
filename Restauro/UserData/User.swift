@@ -79,4 +79,11 @@ class User : ObservableObject {
         
         Firestore.firestore().collection("users").document(uid).updateData(params)
     }
+    
+    func deleteUser() {
+        self.name = ""
+        self.email = ""
+        self.favoriteCafes = [Cafe]()
+        self.favoriteRestaurants = [Restaurant]()
+    }
 }

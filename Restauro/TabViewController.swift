@@ -21,7 +21,7 @@ struct TabViewController: View {
                 .tabItem({Image(systemName: "smallcircle.fill.circle.fill")})
             ProfileScreen(isLoggedIn: $isLoggedIn)
                 .tabItem({Image(systemName: "person.fill")})
-        }.accentColor(.green)
+        }.accentColor(.orange)
         .environmentObject(user)
     }
 }
