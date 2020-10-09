@@ -14,6 +14,8 @@ struct Signin: View {
     @Binding var isLoggedIn : Bool
     @State var email : String = ""
     @State var password : String = ""
+    @State var showAlert = false
+    @State var errorMessage = ""
     
     var body: some View {
         NavigationView {
@@ -51,6 +53,9 @@ struct Signin: View {
                     Spacer()
                 }
                 .padding(20)
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("Important message"), message: Text(errorMessage), dismissButton: .default(Text("Got it!")))
+                }
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)
@@ -62,6 +67,8 @@ struct Signin: View {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if error != nil {
                 print("\(error?.localizedDescription ?? "Problem with signing in")")
+                self.errorMessage = error?.localizedDescription ?? "Problem with signing in"
+                self.showAlert = true
             } else {
                 if let res = result {
                     self.user.uid = res.user.uid

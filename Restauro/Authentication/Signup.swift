@@ -13,9 +13,12 @@ struct Signup: View {
     @EnvironmentObject var user : User
     @Binding var isLoggedIn : Bool
     @State var name : String = ""
+    @State var city : String = ""
     @State var email : String = ""
     @State var password : String = ""
     @State var confirmPassword : String = ""
+    @State var showAlert = false
+    @State var errorMessage = ""
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -29,27 +32,32 @@ struct Signup: View {
                 }
                 Image("signup").resizable().scaledToFit()
                     .padding(.vertical, 50)
-                TextField("Name", text: $name)
-                    .textFieldStyle(CustomTextFieldStyle())
+                Group {
+                    TextField("Name", text: $name)
+                        .textFieldStyle(CustomTextFieldStyle())
+                        .padding(.bottom, 10)
+                    TextField("City", text: $city)
+                        .textFieldStyle(CustomTextFieldStyle())
+                        .padding(.bottom, 10)
+                    TextField("Email", text: $email)
+                        .autocapitalization(.none)
+                        .textFieldStyle(CustomTextFieldStyle())
+                        .padding(.bottom, 10)
+                    SecureField("Password", text: $password)
+                        .autocapitalization(.none)
+                        .textFieldStyle(CustomTextFieldStyle())
+                        .padding(.bottom, 10)
+                    SecureField("Confirm Password", text: $confirmPassword)
+                        .autocapitalization(.none)
+                        .textFieldStyle(CustomTextFieldStyle())
+                        .padding(.bottom, 10)
+                    ZStack {
+                        Color.green.frame(height: 50).cornerRadius(5)
+                        Text("Sign up").foregroundColor(.white)
+                    }
+                    .onTapGesture(perform: signupHandler)
                     .padding(.bottom, 10)
-                TextField("Email", text: $email)
-                    .autocapitalization(.none)
-                    .textFieldStyle(CustomTextFieldStyle())
-                    .padding(.bottom, 10)
-                SecureField("Password", text: $password)
-                    .autocapitalization(.none)
-                    .textFieldStyle(CustomTextFieldStyle())
-                    .padding(.bottom, 10)
-                SecureField("Confirm Password", text: $confirmPassword)
-                    .autocapitalization(.none)
-                    .textFieldStyle(CustomTextFieldStyle())
-                    .padding(.bottom, 10)
-                ZStack {
-                    Color.green.frame(height: 50).cornerRadius(5)
-                    Text("Sign up").foregroundColor(.white)
                 }
-                .onTapGesture(perform: signupHandler)
-                .padding(.bottom, 10)
                 
                 HStack {
                     Spacer()
@@ -64,6 +72,9 @@ struct Signup: View {
                 Spacer()
             }
             .padding(20)
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Important message"), message: Text(errorMessage), dismissButton: .default(Text("Got it!")))
+            }
         }
         .navigationBarTitle("")
         .navigationBarBackButtonHidden(true)
@@ -72,22 +83,37 @@ struct Signup: View {
     
     func signupHandler() {
         print("Inside Signup Handler")
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if error != nil {
-                print("\(error?.localizedDescription ?? "Problem while signing up")")
-            } else {
-                if let res = result {
-                    Firestore.firestore().collection("users").document(res.user.uid).setData([
-                        "name" : self.name,
-                        "email" : self.email,
-                        "favoriteCafes" : [],
-                        "favoriteRestaurants" : []
-                    ])
-                    self.user.uid = res.user.uid
-                    self.user.loadDataFromFirebase()
+        if name.count > 0 && city.count > 0 {
+            if password == confirmPassword {
+                Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+                    if error != nil {
+                        print("\(error?.localizedDescription ?? "Problem while signing up")")
+                        self.errorMessage = error?.localizedDescription ?? "Problem while signing up"
+                        self.showAlert = true
+                    } else {
+                        if let res = result {
+                            Firestore.firestore().collection("users").document(res.user.uid).setData([
+                                "name" : self.name,
+                                "email" : self.email,
+                                "city" : self.city,
+                                "favoriteCafes" : [],
+                                "favoriteRestaurants" : []
+                            ])
+                            self.user.uid = res.user.uid
+                            self.user.loadDataFromFirebase()
+                        }
+                        self.isLoggedIn = true
+                    }
                 }
-                self.isLoggedIn = true
+            } else {
+                self.errorMessage = "Password don't match"
+                self.showAlert = true
+                return
             }
+        } else {
+            self.errorMessage = "Some text fields are empty"
+            self.showAlert = true
+            return
         }
     }
 }
