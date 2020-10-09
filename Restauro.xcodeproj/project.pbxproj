@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3021EBBC253079BD00E095A7 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3021EBBB253079BD00E095A7 /* UserLocation.swift */; };
 		303709FC252EF0B900241206 /* CafeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303709FB252EF0B900241206 /* CafeDetailView.swift */; };
 		303709FF252F003700241206 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303709FE252F003700241206 /* User.swift */; };
 		30370A03252F3ABC00241206 /* CafeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30370A02252F3ABC00241206 /* CafeListView.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		176A21BFB132D887D4A79D24 /* Pods-Restauro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restauro.debug.xcconfig"; path = "Target Support Files/Pods-Restauro/Pods-Restauro.debug.xcconfig"; sourceTree = "<group>"; };
+		3021EBBB253079BD00E095A7 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		303709FB252EF0B900241206 /* CafeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeDetailView.swift; sourceTree = "<group>"; };
 		303709FE252F003700241206 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		30370A02252F3ABC00241206 /* CafeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeListView.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			children = (
 				30FB9FB9252DDF5400C2CF11 /* Restaurant.swift */,
 				30FB9FBF252E03E900C2CF11 /* Cafe.swift */,
+				3021EBBB253079BD00E095A7 /* UserLocation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				303709FC252EF0B900241206 /* CafeDetailView.swift in Sources */,
 				30FB9FA6252D9AA200C2CF11 /* Signup.swift in Sources */,
 				30FB9FB5252DA29300C2CF11 /* ProfileScreen.swift in Sources */,
+				3021EBBC253079BD00E095A7 /* UserLocation.swift in Sources */,
 				30370A03252F3ABC00241206 /* CafeListView.swift in Sources */,
 				30FB9FA8252D9C3600C2CF11 /* CustomTextFieldStyle.swift in Sources */,
 				30FB9F91252D8F4900C2CF11 /* SceneDelegate.swift in Sources */,

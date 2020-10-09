@@ -55,11 +55,40 @@ struct HomeScreen: View {
                     Text("Save").foregroundColor(.white).bold()
                 }.onTapGesture {
                     self.changeCity = false
+                    self.setLocation()
                     self.user.saveDataToFirestore()
                 }
                 Spacer()
             }.padding(50)
         }
+    }
+    
+    func setLocation() {
+        
+        print("URL = https://developers.zomato.com/api/v2.1/locations?query=\(self.user.city)")
+        guard let url = URL(string: "https://developers.zomato.com/api/v2.1/locations?query=\(self.user.city)") else {
+            print("Invalid URL")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.setValue("769b6fd0922075ca2e09b01738beee74", forHTTPHeaderField: "user-key")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil {
+                print("\(error!.localizedDescription)")
+                return
+            }
+            
+            if let data = data {
+                if let decodedResponse = try? JSONDecoder().decode(UserLocation.self, from: data) {
+                    DispatchQueue.main.async {
+                        self.user.cityId = decodedResponse.location_suggestions[0].entity_id
+                    }
+                    return
+                }
+            }
+        }.resume()
     }
 }
 

@@ -14,6 +14,7 @@ class User : ObservableObject {
     @Published var name = ""
     @Published var email = ""
     @Published var city = ""
+    @Published var cityId = 0
     @Published var favoriteCafes = [Cafe]()
     @Published var favoriteRestaurants = [Restaurant]()
     
