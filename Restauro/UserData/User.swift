@@ -25,8 +25,27 @@ class User : ObservableObject {
                     let data = docs.data()!
                     self.name = data["name"] as! String
                     self.email = data["email"] as! String
-                    self.favoriteCafes = data["favoriteCafes"] as! [Cafe]
-                    self.favoriteRestaurants = data["favoriteRestaurants"] as! [Restaurant]
+                    let firebaseFavCafe = data["favoriteCafes"] as! [Any]
+                    let firebaseFavRestaurant = data["favoriteRestaurants"] as! [Any]
+                    for cafe in firebaseFavCafe {
+                        do {
+                            let jsonData = try JSONSerialization.data(withJSONObject: cafe, options: [])
+                            let c = try JSONDecoder().decode(Cafe.self, from: jsonData)
+                            self.favoriteCafes.append(c)
+                        } catch {
+                            print("Error decoding data")
+                        }
+                    }
+                    
+                    for restaurant in firebaseFavRestaurant {
+                        do {
+                            let jsonData = try JSONSerialization.data(withJSONObject: restaurant, options: [])
+                            let r = try JSONDecoder().decode(Restaurant.self, from: jsonData)
+                            self.favoriteRestaurants.append(r)
+                        } catch {
+                            print("Error decoding data")
+                        }
+                    }
                 }
             }
         }
@@ -42,7 +61,7 @@ class User : ObservableObject {
                 let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: [])
                 firebaseFavCafe.append(jsonObject)
             } catch {
-                print("Error while encoding data")
+                print("Error while encoding data from Firebase")
             }
         }
         
