@@ -96,11 +96,13 @@ struct Signup: View {
                                 "name" : self.name,
                                 "email" : self.email,
                                 "city" : self.city,
+                                "cityId" : self.user.cityId,
                                 "favoriteCafes" : [],
                                 "favoriteRestaurants" : []
                             ])
                             self.user.uid = res.user.uid
                             self.user.loadDataFromFirebase()
+                            
                         }
                         self.isLoggedIn = true
                     }

@@ -15,29 +15,33 @@ struct HomeScreen: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                HStack {
-                    Image(systemName : "mappin.and.ellipse").foregroundColor(.orange).padding(.trailing, 5)
-                    Text(user.city).font(.headline)
+                if self.user.city.isEmpty {
+                    EmptyView()
+                } else {
+                    HStack {
+                        Image(systemName : "mappin.and.ellipse").foregroundColor(.orange).padding(.trailing, 5)
+                        Text(user.city).font(.headline)
+                        Spacer()
+                        Image(systemName: "magnifyingglass").font(.system(size: 25)).padding(.trailing, 10).onTapGesture {
+                            self.changeCity = true
+                        }
+                        Image("person").resizable().scaledToFit().frame(width: 35).cornerRadius(25)
+                    }.onAppear(perform: setLocation)
+                    
+                    Text("What would you\nlike to visit?").font(.system(size: 25)).bold().padding(.vertical, 20)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 20) {
+                            NavigationLink(destination : CafeScreen()) {
+                                PlaceCard(place: "Cafe", iconName: "cafe")
+                            }.buttonStyle(PlainButtonStyle())
+                            NavigationLink(destination : RestaurantScreen()) {
+                                PlaceCard(place: "Restaurant", iconName: "restaurant")
+                            }.buttonStyle(PlainButtonStyle())
+                        }
+                    }
                     Spacer()
-                    Image(systemName: "magnifyingglass").font(.system(size: 25)).padding(.trailing, 10).onTapGesture {
-                        self.changeCity = true
-                    }
-                    Image("person").resizable().scaledToFit().frame(width: 35).cornerRadius(25)
                 }
-                
-                Text("What would you\nlike to visit?").font(.system(size: 25)).bold().padding(.vertical, 20)
-                
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 20) {
-                        NavigationLink(destination : CafeScreen()) {
-                            PlaceCard(place: "Cafe", iconName: "cafe")
-                        }.buttonStyle(PlainButtonStyle())
-                        NavigationLink(destination : RestaurantScreen()) {
-                            PlaceCard(place: "Restaurant", iconName: "restaurant")
-                        }.buttonStyle(PlainButtonStyle())
-                    }
-                }
-                Spacer()
             }
             .padding()
             .navigationBarTitle("")
@@ -56,7 +60,6 @@ struct HomeScreen: View {
                 }.onTapGesture {
                     self.changeCity = false
                     self.setLocation()
-                    self.user.saveDataToFirestore()
                 }
                 Spacer()
             }.padding(50)
@@ -64,8 +67,6 @@ struct HomeScreen: View {
     }
     
     func setLocation() {
-        
-        print("URL = https://developers.zomato.com/api/v2.1/locations?query=\(self.user.city)")
         guard let url = URL(string: "https://developers.zomato.com/api/v2.1/locations?query=\(self.user.city)") else {
             print("Invalid URL")
             return
@@ -84,6 +85,7 @@ struct HomeScreen: View {
                 if let decodedResponse = try? JSONDecoder().decode(UserLocation.self, from: data) {
                     DispatchQueue.main.async {
                         self.user.cityId = decodedResponse.location_suggestions[0].entity_id
+                        self.user.saveDataToFirestore()
                     }
                     return
                 }

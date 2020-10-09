@@ -28,6 +28,7 @@ class User : ObservableObject {
                     self.name = data["name"] as! String
                     self.email = data["email"] as! String
                     self.city = data["city"] as! String
+                    self.cityId = data["cityId"] as! Int
                     let firebaseFavCafe = data["favoriteCafes"] as! [Any]
                     let firebaseFavRestaurant = data["favoriteRestaurants"] as! [Any]
                     for cafe in firebaseFavCafe {
@@ -82,7 +83,8 @@ class User : ObservableObject {
             "favoriteCafes" : firebaseFavCafe,
             "favoriteRestaurants" : firebaseFavRestaurant,
             "city" : self.city,
-            "name" : self.name,        
+            "name" : self.name,
+            "cityId" : self.cityId
         ]
         
         Firestore.firestore().collection("users").document(uid).updateData(params)
@@ -91,6 +93,8 @@ class User : ObservableObject {
     func deleteUser() {
         self.name = ""
         self.email = ""
+        self.city = ""
+        self.cityId = 0
         self.favoriteCafes = [Cafe]()
         self.favoriteRestaurants = [Restaurant]()
     }

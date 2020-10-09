@@ -9,23 +9,32 @@
 import SwiftUI
 
 struct CafeScreen: View {
+    @EnvironmentObject var user : User
     @State var cafes = [Cafes]()
+    @State var loading = true
     var body: some View {
         VStack {
-            List {
-                ForEach(cafes, id:\.restaurant.id) { c in
-                    NavigationLink(destination: CafeDetailView(restaurant: c.restaurant)) {
-                        Text("\(c.restaurant.name)")
+            if loading {
+                Text("Loading...").font(.title)
+            } else {
+                if self.cafes.count == 0 {
+                    Text("Sorry, no cafes found :(").font(.title)
+                } else {
+                    List {
+                        ForEach(cafes, id:\.restaurant.id) { c in
+                            NavigationLink(destination: CafeDetailView(restaurant: c.restaurant)) {
+                                Text("\(c.restaurant.name)")
+                            }
+                        }
                     }
                 }
             }
-            
         }.onAppear(perform: getCafes)
-        .navigationBarTitle("Cafes")
+            .navigationBarTitle("Cafes")
     }
     
     func getCafes() {
-        guard let url = URL(string: "https://developers.zomato.com/api/v2.1/search?entity_id=94741&entity_type=zone&establishment_type=1") else {
+        guard let url = URL(string: "https://developers.zomato.com/api/v2.1/search?entity_id=\(self.user.cityId)&entity_type=zone&establishment_type=1") else {
             print("Invalid URL")
             return
         }
@@ -43,6 +52,7 @@ struct CafeScreen: View {
                 if let decodedResponse = try? JSONDecoder().decode(decodeCafe.self, from: data) {
                     DispatchQueue.main.async {
                         self.cafes = decodedResponse.restaurants
+                        self.loading = false
                     }
                     return
                 }
