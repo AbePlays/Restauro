@@ -13,6 +13,7 @@ class User : ObservableObject {
     @Published var uid = ""
     @Published var name = ""
     @Published var email = ""
+    @Published var city = ""
     @Published var favoriteCafes = [Cafe]()
     @Published var favoriteRestaurants = [Restaurant]()
     
@@ -25,6 +26,7 @@ class User : ObservableObject {
                     let data = docs.data()!
                     self.name = data["name"] as! String
                     self.email = data["email"] as! String
+                    self.city = data["city"] as! String
                     let firebaseFavCafe = data["favoriteCafes"] as! [Any]
                     let firebaseFavRestaurant = data["favoriteRestaurants"] as! [Any]
                     for cafe in firebaseFavCafe {
@@ -75,7 +77,12 @@ class User : ObservableObject {
             }
         }
         
-        let params: [String: Any] = ["favoriteCafes" : firebaseFavCafe, "favoriteRestaurants" : firebaseFavRestaurant]
+        let params: [String: Any] = [
+            "favoriteCafes" : firebaseFavCafe,
+            "favoriteRestaurants" : firebaseFavRestaurant,
+            "city" : self.city,
+            "name" : self.name,        
+        ]
         
         Firestore.firestore().collection("users").document(uid).updateData(params)
     }

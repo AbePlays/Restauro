@@ -9,12 +9,13 @@
 import SwiftUI
 
 struct HomeScreen: View {
+    @EnvironmentObject var user : User
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
                 HStack {
                     Image(systemName : "mappin.and.ellipse").foregroundColor(.orange).padding(.trailing, 5)
-                    Text("Your Address").font(.headline)
+                    Text(user.city).font(.headline)
                     Spacer()
                     Image(systemName: "magnifyingglass").font(.system(size: 25)).padding(.trailing, 10)
                     Image("person").resizable().scaledToFit().frame(width: 35).cornerRadius(25)
